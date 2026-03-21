@@ -1,0 +1,1118 @@
+/* =========================================================
+   1. VARIABLES GLOBALES
+   Base visual centralizada.
+   Cambiar colores, radios, sombras o ancho general.
+========================================================= */
+:root {
+  /* ===== COLORES PRINCIPALES =====
+     --ivory: fondo claro general de la web
+     --cream: variante clara auxiliar
+     --white: blanco puro para tarjetas y bloques
+  */
+  --ivory: #f9f7f2;
+  --cream: #f6f1e8;
+  --white: #ffffff;
+
+  /* ===== VERDES / TEXTOS =====
+     --sage: verde suave decorativo
+     --sage-dark: verde oscuro principal para textos elegantes
+  */
+  --sage: #c9d2c6;
+  --sage-dark: #2e4a3f;
+
+  /* ===== DORADOS =====
+     Color principal de secciones como ubicación, FAQ o RSVP
+  */
+  --gold: #c5a46d;
+  --gold-30: rgba(197, 164, 109, 0.3);
+  --gold-40: rgba(197, 164, 109, 0.4);
+
+  /* ===== MARRONES =====
+     Se usan sobre todo en títulos y detalles de tarjetas claras
+  */
+  --brown: #835d2f;
+  --brown-80: rgba(131, 93, 47, 0.8);
+  --brown-70: rgba(131, 93, 47, 0.7);
+  --brown-60: rgba(131, 93, 47, 0.6);
+  --brown-22: rgba(131, 93, 47, 0.22);
+
+  /* ===== TEXTOS GENERALES ===== */
+  --ink: rgba(16, 16, 16, 0.92);
+  --muted: rgba(46, 74, 63, 0.7);
+
+  /* ===== SOMBRAS =====
+     --shadow-lg: sombra para tarjetas importantes
+     --shadow-md: sombra más suave para elementos secundarios
+  */
+  --shadow-lg: 0 18px 40px rgba(0, 0, 0, 0.14);
+  --shadow-md: 0 10px 26px rgba(0, 0, 0, 0.12);
+
+  /* ===== RADIOS =====
+     Controlan lo redondeado de las tarjetas y bloques
+  */
+  --r-xl: 22px;
+  --r-lg: 18px;
+  --r-md: 14px;
+
+  /* ===== MAQUETACIÓN =====
+     Ancho máximo del contenido centrado
+  */
+  --container: 980px;
+}
+
+/* =========================================================
+   2. RESET / BASE
+========================================================= */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  color-scheme: light only;
+}
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+   3. TIPOGRAFÍAS UTILITARIAS
+   Estas clases solo asignan fuente.
+   Luego cada bloque define su tamaño, color, espaciado, etc.
+========================================================= */
+.font-display {
+  font-family: "Great Vibes", cursive;
+}
+
+.font-serif {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.font-body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.font-names {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* =========================================================
+   4. CLASES BASE DE MAQUETACIÓN
+========================================================= */
+.container {
+  width: min(var(--container), 100%);
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 72px 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 92px 0;
+  }
+}
+
+/* Fondo tipo papel / textura */
+.paper {
+  background-image: url("fondo-invitacio.PNG");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Línea decorativa fina */
+.line {
+  width: 40px;
+  height: 1px;
+  margin: 0 auto;
+  background: rgba(46, 74, 63, 0.2);
+}
+
+/* =========================================================
+   5. TÍTULOS GENERALES DE SECCIÓN
+   .title: título principal de cada bloque
+   .subtitle: subtítulo pequeño en mayúsculas
+========================================================= */
+.title {
+  margin: 0 0 10px;
+  text-align: center;
+  color: var(--sage-dark);
+  font-size: clamp(34px, 6vw, 58px);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.subtitle {
+  margin: 0 0 8px;
+  text-align: center;
+  color: rgba(46, 74, 63, 0.6);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   6. BOTONES
+   .btn: botón base
+   .btn.primary: botón principal dorado
+   .btn-block: botón ancho completo
+========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  appearance: none;
+  padding: 10px 14px;
+  border: 1px solid rgba(46, 74, 63, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--sage-dark);
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(197, 164, 109, 0.35);
+}
+
+.btn.primary {
+  background: var(--gold);
+  color: var(--ivory);
+  border-color: rgba(197, 164, 109, 0.35);
+}
+
+.btn.primary:hover {
+  background: rgba(197, 164, 109, 0.92);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* =========================================================
+   7. TARJETAS BASE
+   Se usa en RSVP y puede reutilizarse en otros módulos
+========================================================= */
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(197, 164, 109, 0.2);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.card.inner {
+  padding: 22px;
+}
+
+@media (min-width: 768px) {
+  .card.inner {
+    padding: 34px;
+  }
+}
+
+/* =========================================================
+   8. HERO / PORTADA
+   Fondo con imagen + overlay oscuro + nombres + fecha
+========================================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.hero .media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.hero .content {
+  position: relative;
+  z-index: 2;
+  min-height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-top {
+  padding-top: clamp(48px, 8vh, 78px);
+  text-align: center;
+  color: var(--white);
+}
+
+@media (min-width: 768px) {
+  .hero-top {
+    padding-top: 110px;
+  }
+}
+
+.hero-kicker {
+  margin-bottom: 28px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.95;
+  text-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+}
+
+.hero-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero-names .name {
+  font-size: clamp(64px, 16vw, 170px);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.92;
+}
+
+.hero-names .amp {
+  margin: -10px 0 -4px;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(36px, 7vw, 72px);
+  opacity: 0.95;
+}
+
+.hero-bottom {
+  padding: 0 18px 26px;
+  text-align: center;
+  color: var(--white);
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  opacity: 0.95;
+}
+
+.hero-divider span:first-child,
+.hero-divider span:last-child {
+  width: 56px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+@media (min-width: 768px) {
+  .hero-divider span:first-child,
+  .hero-divider span:last-child {
+    width: 110px;
+  }
+}
+
+.hero-date {
+  font-size: clamp(18px, 3.6vw, 34px);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero-rsvp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 18px;
+  color: var(--white);
+  cursor: pointer;
+  user-select: none;
+}
+
+.hero-rsvp small {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.95;
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.chev {
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  border-top: 0;
+  border-left: 0;
+  transform: rotate(45deg);
+  animation: floaty 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  50% {
+    transform: translateY(6px) rotate(45deg);
+  }
+}
+
+/* =========================================================
+   9. COUNTDOWN / CUENTA ATRÁS
+   Fondo claro con los números grandes y separadores verticales
+========================================================= */
+#countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(380px, 74vw, 640px);
+  padding: 40px 0;
+  background-size: cover;
+  background-position: center;
+}
+
+#countdown .container {
+  width: min(760px, calc(100% - 48px));
+  min-height: clamp(250px, 46vw, 400px);
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.count-item {
+  min-width: 0;
+  text-align: center;
+}
+
+.count-num {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(48px, 8vw, 86px);
+  line-height: 0.95;
+  color: var(--sage-dark);
+  font-style: italic;
+}
+
+.count-lbl {
+  margin-top: 12px;
+  color: rgba(197, 164, 109, 0.88);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+}
+
+.count-sep {
+  width: 1px;
+  height: 42px;
+  flex: 0 0 auto;
+  background: rgba(46, 74, 63, 0.16);
+}
+
+@media (max-width: 640px) {
+  #countdown {
+    min-height: 330px;
+    padding: 28px 0;
+  }
+
+  #countdown .container {
+    width: min(100%, calc(100% - 32px));
+    min-height: 220px;
+    padding: 18px 14px;
+  }
+
+  .countdown {
+    gap: 16px;
+  }
+
+  .count-num {
+    font-size: clamp(34px, 11vw, 58px);
+  }
+
+  .count-lbl {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+  }
+
+  .count-sep {
+    height: 30px;
+  }
+}
+
+/* =========================================================
+   10. UBICACIÓN / VENUE
+   Fondo dorado y tarjeta blanca con imagen, datos y mapa
+========================================================= */
+.venue-wrap {
+  background: var(--gold);
+  color: var(--ivory);
+}
+
+.venue-wrap .title,
+.venue-wrap .subtitle {
+  color: var(--ivory);
+}
+
+.venue-wrap .subtitle {
+  color: rgba(249, 247, 242, 0.88);
+}
+
+.venue-card {
+  overflow: hidden;
+  padding: 22px;
+  text-align: center;
+  color: var(--brown);
+  background: var(--white);
+  border: 1px solid rgba(197, 164, 109, 0.2);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 768px) {
+  .venue-card {
+    padding: 34px;
+  }
+}
+
+.venue-img {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  margin: 0 auto 10px;
+  opacity: 0.95;
+}
+
+.venue-name {
+  margin: 12px 0 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(197, 164, 109, 0.2);
+  color: var(--brown);
+  font-size: clamp(32px, 6vw, 48px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.venue-meta .dot,
+.venue-meta .meta-text {
+  color: var(--brown);
+}
+
+.venue-meta .meta-text {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.venue-line {
+  margin: 16px auto;
+}
+
+.addr {
+  margin-top: 14px;
+  color: var(--brown);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.map-box {
+  overflow: hidden;
+  height: 240px;
+  margin-top: 18px;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: sepia(0.25) saturate(0.6) hue-rotate(5deg) brightness(1.05);
+}
+
+.venue-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+/* Enlace tipo "abrir en Google Maps" */
+.maps-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 0 10px;
+  color: #b49667;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  border-bottom: 1px solid rgba(180, 150, 103, 0.35);
+  transition: color 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+}
+
+.maps-link:hover {
+  color: #9f8153;
+  border-bottom-color: rgba(159, 129, 83, 0.5);
+  transform: translateY(-1px);
+}
+
+.maps-link-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  opacity: 0.9;
+}
+
+.maps-link-text {
+  display: inline-block;
+}
+
+/* =========================================================
+   11. TRANSPORTE
+   Tarjeta clara con paradas de ida y horarios de vuelta
+========================================================= */
+#transport {
+  background: #f9f6f1;
+}
+
+.transport-card {
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(197, 164, 109, 0.2);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(10px);
+}
+
+@media (min-width: 768px) {
+  .transport-card {
+    padding: 34px;
+  }
+}
+
+.transport-block-title {
+  margin: 0 0 10px;
+  color: var(--brown);
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.transport-note {
+  margin: 0 0 18px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.transport-stop {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(197, 164, 109, 0.18);
+}
+
+.transport-stop-last {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.transport-stop-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.transport-stop-name {
+  color: var(--brown);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.transport-stop-time {
+  color: var(--brown-80);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.transport-stop-address {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.transport-line {
+  margin: 22px auto;
+}
+
+.transport-return-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.transport-return-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(197, 164, 109, 0.18);
+  border-radius: var(--r-md);
+}
+
+.transport-return-label {
+  color: var(--sage-dark);
+  font-weight: 600;
+}
+
+.transport-return-time {
+  color: var(--brown);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+}
+
+/* =========================================================
+   12. FAQ
+   Fondo dorado con tarjeta blanca de desplegables
+========================================================= */
+#faq {
+  background: var(--gold);
+  color: var(--ivory);
+}
+
+#faq .title,
+#faq .subtitle {
+  color: var(--ivory);
+}
+
+#faq .subtitle {
+  color: rgba(249, 247, 242, 0.88);
+}
+
+.faq-card {
+  padding: 22px;
+  background: var(--white);
+  border: 1px solid rgba(197, 164, 109, 0.2);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 768px) {
+  .faq-card {
+    padding: 34px;
+  }
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+details {
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(197, 164, 109, 0.2);
+  border-radius: var(--r-md);
+}
+
+summary {
+  cursor: pointer;
+  color: var(--sage-dark);
+  font-weight: 600;
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   13. PREBODA
+   Fondo claro con tarjeta para evento previo
+========================================================= */
+.prewedding-wrap {
+  background: #f9f6f1;
+}
+
+.prewedding-subtitle {
+  margin-bottom: 10px;
+  color: rgba(131, 93, 47, 0.72);
+}
+
+.prewedding-title {
+  color: var(--brown);
+}
+
+.prewedding-text {
+  max-width: 720px;
+  margin: 0 auto 26px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.pre-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+@media (min-width: 760px) {
+  .pre-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.pre-item {
+  padding: 20px;
+  text-align: center;
+  color: var(--sage-dark);
+  background: var(--white);
+  border: 1px solid rgba(197, 164, 109, 0.2);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.pre-item h3 {
+  margin: 8px 0 10px;
+  color: rgba(130, 95, 48, 0.92);
+  font-size: 34px;
+  font-weight: 400;
+}
+
+.pre-item .meta {
+  margin: 0;
+  color: rgba(130, 95, 48, 0.75);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+.pre-item .place {
+  margin-top: 6px;
+  color: rgba(130, 95, 48, 0.6);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.pre-icon {
+  width: 72px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.pre-actions {
+  margin-top: 12px;
+}
+
+/* =========================================================
+   14. RSVP / FORMULARIO
+   Fondo dorado + tarjeta blanca + inputs del formulario
+========================================================= */
+.rsvp-wrap {
+  background: var(--gold);
+}
+
+.rsvp-wrap .title {
+  color: var(--white);
+}
+
+.rsvp-wrap .subtitle {
+  color: rgba(249, 247, 242, 0.88);
+}
+
+.rsvp-card {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Texto de cada label */
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--sage-dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Inputs, textarea y selects:
+   - fondo claro
+   - borde dorado suave
+   - texto verde oscuro
+*/
+input,
+textarea,
+select {
+  padding: 12px;
+  background: var(--ivory);
+  border: 1px solid rgba(197, 164, 109, 0.3);
+  border-radius: 12px;
+  outline: none;
+  color: var(--sage-dark);
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* Apariencia cuando un campo está desactivado */
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background: rgba(240, 236, 229, 0.9);
+  border-color: rgba(197, 164, 109, 0.18);
+  color: rgba(46, 74, 63, 0.55);
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Distribución en dos columnas en escritorio */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 700px) {
+  .grid2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Radios personalizados */
+.radios {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+label.radio {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 10px;
+  color: var(--sage-dark);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  cursor: pointer;
+  user-select: none;
+}
+
+.radio input {
+  display: none;
+}
+
+.dot-radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  margin-top: 0;
+  background: transparent;
+  border: 2px solid var(--gold);
+  border-radius: 999px;
+}
+
+.dot-radio::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 999px;
+  transform: scale(0);
+  transition: transform 0.16s ease;
+}
+
+.radio input:checked + .dot-radio::after {
+  transform: scale(1);
+}
+
+/* Bloque de parada de bus ocultable */
+.bus-stop-group > label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.bus-stop-group[hidden] {
+  display: none !important;
+}
+
+/* Mensaje de resultado del envío */
+.result {
+  display: none;
+  margin-top: 18px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(197, 164, 109, 0.2);
+  border-radius: var(--r-md);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+  color: var(--brown);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.result.is-error {
+  background: rgba(255, 248, 248, 0.92);
+  border-color: rgba(166, 70, 70, 0.18);
+  color: #a64646;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   15. BOTÓN FLOTANTE PARA VOLVER ARRIBA
+========================================================= */
+.fab {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(197, 164, 109, 0.3);
+  border-radius: 999px;
+  box-shadow: var(--shadow-md);
+  color: var(--sage-dark);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.fab.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fab:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   16. CIERRE / FIRMA FINAL
+   Línea decorativa + logo o sello final
+========================================================= */
+.closing-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 20px 34px;
+  background: #f8f6f1;
+}
+
+.closing-signature-line {
+  width: 72px;
+  height: 1px;
+  background: var(--brown-22);
+}
+
+.closing-signature-logo {
+  display: block;
+  width: 74px;
+  height: auto;
+  opacity: 0.72;
+}
