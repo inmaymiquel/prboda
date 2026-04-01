@@ -1,1025 +1,1170 @@
-/* =========================================================
-   1. VARIABLES GLOBALES
-   Base visual centralizada.
-   Cambiar colores, radios, sombras o ancho general.
-========================================================= */
 :root {
-  /* ===== COLORES PRINCIPALES =====
-     --ivory: fondo claro general de la web
-     --cream: variante clara auxiliar
-     --white: blanco puro para tarjetas y bloques
-  */
-  --ivory: #f9f7f2;
-  --cream: #f6f1e8;
-  --white: #ffffff;
+    --bg-page: #f9f7f2;
+    --bg-green: #93a996;
+    --bg-beige: #f6f1e8;
+    --bg-card: #fffaf4;
+    --bg-card-soft: #fbf6ef;
+    --bg-field: #edf2ee;
 
-  /* ===== VERDES / TEXTOS =====
-     --sage: verde suave decorativo
-     --sage-dark: verde oscuro principal para textos elegantes
-  */
-  --sage: #c9d2c6;
-  --sage-dark: #2e4a3f;
+    --text-main: #3f5446;
+    --text-soft: #6d756f;
+    --text-on-green: #f8f5ef;
+    --text-on-green-soft: rgba(248, 245, 239, 0.88);
 
-  /* ===== DORADOS =====
-     Color principal de secciones como ubicación, FAQ o RSVP
-  */
-  --gold: #c5a46d;
-  --gold-30: rgba(197, 164, 109, 0.3);
-  --gold-40: rgba(197, 164, 109, 0.4);
+    --accent: #b89a67;
+    --accent-soft: rgba(184, 154, 103, 0.28);
+    --border-soft: rgba(63, 84, 70, 0.14);
 
-  /* ===== MARRONES =====
-     Se usan sobre todo en títulos y detalles de tarjetas claras
-  */
-  --brown: #835d2f;
-  --brown-80: rgba(131, 93, 47, 0.8);
-  --brown-70: rgba(131, 93, 47, 0.7);
-  --brown-60: rgba(131, 93, 47, 0.6);
-  --brown-22: rgba(131, 93, 47, 0.22);
+    --linea-verde: rgba(63, 84, 70, 0.2);
 
-  /* ===== TEXTOS GENERALES ===== */
-  --ink: rgba(16, 16, 16, 0.92);
-  --muted: rgba(46, 74, 63, 0.7);
+    --shadow-md: 0 10px 26px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 18px 40px rgba(0, 0, 0, 0.12);
 
-  /* ===== SOMBRAS =====
-     --shadow-lg: sombra para tarjetas importantes
-     --shadow-md: sombra más suave para elementos secundarios
-  */
-  --shadow-lg: 0 18px 40px rgba(0, 0, 0, 0.14);
-  --shadow-md: 0 10px 26px rgba(0, 0, 0, 0.12);
+    --r-xl: 22px;
+    --r-lg: 18px;
+    --r-md: 14px;
 
-  /* ===== RADIOS =====
-     Controlan lo redondeado de las tarjetas y bloques
-  */
-  --r-xl: 22px;
-  --r-lg: 18px;
-  --r-md: 14px;
+    --container: 980px;
 
-  /* ===== MAQUETACIÓN =====
-     Ancho máximo del contenido centrado
-  */
-  --container: 980px;
+    /* RSVP */
+    /* VARIABLE DE COLOR: si cambias esto, afectas varias zonas de la web */
+    --rsvp-surface: #dbe4dc;
+    /* VARIABLE DE COLOR: si cambias esto, afectas varias zonas de la web */
+    --separador-green-soft: #e8eee9;
+    /* VARIABLE DE COLOR: si cambias esto, afectas varias zonas de la web */
+    --rsvp-surface-strong: #cfdacf;
+
+    --rsvp-title: #f7f4ee;
+    --rsvp-heading: #4f6253;
+    --rsvp-text: #2f3a31;
+    --rsvp-label: #55675a;
+    --rsvp-muted: #708173;
+
+    --rsvp-border: rgba(79, 98, 83, 0.18);
+    --rsvp-border-soft: rgba(79, 98, 83, 0.12);
+    --rsvp-focus: rgba(79, 98, 83, 0.1);
+
+    --rsvp-button: #4f6253;
+    --rsvp-button-hover: #445647;
+    --rsvp-button-text: #f7f4ee;
 }
 
-/* =========================================================
-   2. RESET / BASE
-========================================================= */
 * {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
+    box-sizing: border-box;
 }
 
 html {
-  color-scheme: light only;
+    scroll-behavior: smooth;
+    color-scheme: light only;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
-  margin: 0;
-  background: var(--ivory);
-  color: var(--ink);
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  scroll-behavior: smooth;
+    margin: 0;
+    background: var(--bg-page);
+    color: var(--text-main);
+    font-family: "Cormorant Garamond", serif;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* =========================================================
-   3. TIPOGRAFÍAS UTILITARIAS
-   Estas clases solo asignan fuente.
-   Luego cada bloque define su tamaño, color, espaciado, etc.
-========================================================= */
-.font-display {
-  font-family: "Great Vibes", cursive;
+img {
+    max-width: 100%;
 }
 
-.font-serif {
-  font-family: "Cormorant Garamond", serif;
-}
-
-.font-body {
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
-
+.font-display,
 .font-names {
-  font-family: "Great Vibes", cursive;
-  font-weight: 400;
-  letter-spacing: 0.01em;
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
 }
 
-/* =========================================================
-   4. CLASES BASE DE MAQUETACIÓN
-========================================================= */
+.font-serif,
+.font-body {
+    font-family: "Cormorant Garamond", serif;
+}
+
 .container {
-  width: min(var(--container), 100%);
-  margin: 0 auto;
-  padding: 0 18px;
+    width: min(var(--container), 100%);
+    margin: 0 auto;
+    padding: 0 18px;
 }
 
 .section {
-  position: relative;
-  overflow: hidden;
-  padding: 72px 0;
+    padding: 72px 0;
 }
 
 @media (min-width: 768px) {
-  .section {
-    padding: 92px 0;
-  }
+    .section {
+        padding: 92px 0;
+    }
 }
 
-/* Fondo tipo papel / textura */
 .paper {
-  background-image: url("fondo-invitacio.PNG");
-  background-size: cover;
-  background-position: center;
+    background-image: url("fondo-invitacio.PNG");
+    background-size: cover;
+    background-position: center;
 }
 
-/* Línea decorativa fina */
-.line {
-  width: 40px;
-  height: 1px;
-  margin: 0 auto;
-  background: rgba(46, 74, 63, 0.2);
-}
-
-/* =========================================================
-   5. TÍTULOS GENERALES DE SECCIÓN
-   .title: título principal de cada bloque
-   .subtitle: subtítulo pequeño en mayúsculas
-========================================================= */
 .title {
-  margin: 0 0 10px;
-  text-align: center;
-  color: var(--sage-dark);
-  font-size: clamp(34px, 6vw, 58px);
-  font-weight: 400;
-  line-height: 0.95;
+    margin: 0 0 10px;
+    text-align: center;
+    color: var(--text-main);
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.06;
 }
 
 .subtitle {
-  margin: 0 0 8px;
-  text-align: center;
-  color: rgba(46, 74, 63, 0.6);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+    margin: 0 0 8px;
+    text-align: center;
+    color: var(--text-soft);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
 }
 
-/* =========================================================
-   6. BOTONES
-   .btn: botón base
-   .btn.primary: botón principal dorado
-   .btn-block: botón ancho completo
-========================================================= */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  appearance: none;
-  padding: 10px 14px;
-  border: 1px solid rgba(46, 74, 63, 0.18);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--sage-dark);
-  cursor: pointer;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  backdrop-filter: blur(8px);
-  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+.line {
+    width: 46px;
+    height: 1px;
+    margin: 0 auto;
+  /*  background: var(--accent-soft); */
+  background: var(--linea-verde);
 }
 
-.btn:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(197, 164, 109, 0.35);
+.card,
+.details-card,
+.pre-card {
+    background: var(--bg-card);
+    color: var(--text-main);
+    /* border: 1px solid var(--border-soft); */
+   border: 1px solid var(--linea-verde);
+    border-radius: var(--r-xl);
+    box-shadow: var(--shadow-lg);
 }
 
-.btn.primary {
-  background: var(--gold);
-  color: var(--ivory);
-  border-color: rgba(197, 164, 109, 0.35);
-}
-
-.btn.primary:hover {
-  background: rgba(197, 164, 109, 0.92);
-}
-
-.btn-block {
-  width: 100%;
-}
-
-/* =========================================================
-   7. TARJETAS BASE
-   Se usa en RSVP y puede reutilizarse en otros módulos
-========================================================= */
-.card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(197, 164, 109, 0.2);
-  border-radius: var(--r-xl);
-  box-shadow: var(--shadow-lg);
-}
-
-.card.inner {
-  padding: 22px;
+.card.inner,
+.details-card,
+.pre-card {
+    padding: 24px;
 }
 
 @media (min-width: 768px) {
-  .card.inner {
-    padding: 34px;
-  }
+    .card.inner,
+    .details-card,
+    .pre-card {
+        padding: 32px;
+    }
 }
 
-/* =========================================================
-   8. HERO / PORTADA
-   Fondo con imagen + overlay oscuro + nombres + fecha
-========================================================= */
+/* HERO */
 .hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background: var(--white);
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #fff;
 }
 
-.hero .media {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
+.hero .media,
+.hero img,
+.hero .overlay {
+    position: absolute;
+    inset: 0;
 }
 
 .hero img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.32);
+    background: rgba(0, 0, 0, 0.40);
 }
 
 .hero .content {
-  position: relative;
-  z-index: 2;
-  min-height: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    position: relative;
+    z-index: 2;
+    min-height: 100%;
+    flex: 1;
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+    align-items: center;
+    padding-bottom: env(safe-area-inset-bottom, 0);
 }
+
+
+.hero-top,
+.hero-bottom {
+    text-align: center;
+    color: #fff;
+}
+/*
+ BLOQUE SUPERIOR
+.hero-top {
+    padding-top: 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ */
 
 .hero-top {
-  padding-top: clamp(48px, 8vh, 78px);
-  text-align: center;
-  color: var(--white);
-}
-
-@media (min-width: 768px) {
-  .hero-top {
-    padding-top: 110px;
-  }
-}
-
-.hero-kicker {
-  margin-bottom: 28px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  opacity: 0.95;
-  text-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
-}
-
-.hero-names {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  margin: 0;
-  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-}
-
-.hero-names .name {
-  font-size: clamp(64px, 16vw, 170px);
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 0.92;
-}
-
-.hero-names .amp {
-  margin: -10px 0 -4px;
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(36px, 7vw, 72px);
-  opacity: 0.95;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
 }
 
 .hero-bottom {
-  padding: 0 18px 26px;
-  text-align: center;
-  color: var(--white);
+    grid-row: 3;
+    align-self: end;
+    padding: 0 18px 34px;
+}
+
+/* ¡NOS CASAMOS! */
+.hero-kicker {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    text-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* NOMBRES */
+.hero-names {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin: 10px 0 0;
+    text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+
+}
+
+.hero-names .name {
+    font-size: clamp(64px, 16vw, 170px);
+    line-height: 0.92;
+}
+
+.hero-names .amp {
+    margin: -6px 0 -2px;
+    font-size: clamp(36px, 7vw, 72px);
+}
+
+/* BLOQUE INFERIOR */
+.hero-bottom {
+    padding: 0 18px 34px;
 }
 
 .hero-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin-bottom: 14px;
-  opacity: 0.95;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 14px;
 }
 
 .hero-divider span:first-child,
 .hero-divider span:last-child {
-  width: 56px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.7);
-}
-
-@media (min-width: 768px) {
-  .hero-divider span:first-child,
-  .hero-divider span:last-child {
-    width: 110px;
-  }
+    width: 56px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.7);
 }
 
 .hero-date {
-  font-size: clamp(18px, 3.6vw, 34px);
-  font-weight: 300;
-  letter-spacing: 0.18em;
-  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    margin: 0;
+    font-size: clamp(18px, 3.6vw, 34px);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
-.hero-rsvp {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding-bottom: 18px;
-  color: var(--white);
-  cursor: pointer;
-  user-select: none;
+/* TABLET / DESKTOP */
+@media (min-width: 768px) {
+    .hero-top {
+        padding-top: 0;
+    }
+
+    .hero-names {
+        margin-top: 20px;
+        gap: 16px;
+    }
+
+    .hero-divider span:first-child,
+    .hero-divider span:last-child {
+        width: 110px;
+    }
+
+    .hero-bottom {
+        padding-bottom: 40px;
+    }
 }
 
-.hero-rsvp small {
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  opacity: 0.95;
-  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+/* MÓVIL PEQUEÑO */
+@media (max-width: 430px) {
+    .hero-top {
+        padding-top: 0px;
+    }
+
+    .hero-kicker {
+        margin-bottom: 6px;
+        font-size: 12px;
+        letter-spacing: 0.26em;
+    }
+
+    .hero-names {
+        margin-top: 16px;
+        gap: 12px;
+    }
+
+    .hero-names .name {
+        font-size: clamp(58px, 15vw, 86px);
+    }
+
+    .hero-names .amp {
+        font-size: clamp(30px, 6vw, 48px);
+    }
+
+    .hero-bottom {
+        padding: 0 18px 28px;
+    }
+
+    .hero-date {
+        font-size: clamp(16px, 4.2vw, 22px);
+    }
 }
-
-.chev {
-  width: 22px;
-  height: 22px;
-  border: 2px solid rgba(255, 255, 255, 0.85);
-  border-top: 0;
-  border-left: 0;
-  transform: rotate(45deg);
-  animation: floaty 1.2s ease-in-out infinite;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
-}
-
-@keyframes floaty {
-  0%,
-  100% {
-    transform: translateY(0) rotate(45deg);
-  }
-
-  50% {
-    transform: translateY(6px) rotate(45deg);
-  }
-}
-
-/* =========================================================
-   9. COUNTDOWN / CUENTA ATRÁS
-   Fondo claro con los números grandes y separadores verticales
-========================================================= */
+/* COUNTDOWN */
 #countdown {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: clamp(380px, 74vw, 640px);
-  padding: 40px 0;
-  background-size: cover;
-  background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(380px, 74vw, 640px);
+    padding: 40px 0;
 }
 
 #countdown .container {
-  width: min(760px, calc(100% - 48px));
-  min-height: clamp(250px, 46vw, 400px);
-  padding: 28px 22px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    width: min(760px, calc(100% - 48px));
+    min-height: clamp(250px, 46vw, 400px);
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .countdown {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 26px;
-  flex-wrap: nowrap;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    width: 100%;
 }
 
 .count-item {
-  min-width: 0;
-  text-align: center;
+    text-align: center;
 }
 
 .count-num {
-  font-family: "Great Vibes", cursive;
-  font-size: clamp(48px, 8vw, 86px);
-  line-height: 0.95;
-  color: var(--sage-dark);
-  font-style: italic;
+    font-size: clamp(48px, 8vw, 86px);
+    line-height: 0.95;
+    color: var(--text-main);
+    
 }
 
 .count-lbl {
-  margin-top: 12px;
-  color: rgba(197, 164, 109, 0.88);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.38em;
-  text-transform: uppercase;
+    margin-top: 12px;
+    color: var(--text-soft);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
 }
 
 .count-sep {
-  width: 1px;
-  height: 42px;
-  flex: 0 0 auto;
-  background: rgba(46, 74, 63, 0.16);
+    width: 1px;
+    height: 42px;
+    background: var(--separador-green-soft);
 }
 
 @media (max-width: 640px) {
-  #countdown {
-    min-height: 330px;
-    padding: 28px 0;
-  }
+    #countdown {
+        min-height: 330px;
+        padding: 28px 0;
+    }
 
-  #countdown .container {
-    width: min(100%, calc(100% - 32px));
-    min-height: 220px;
-    padding: 18px 14px;
-  }
+    #countdown .container {
+        width: min(100%, calc(100% - 32px));
+        min-height: 220px;
+        padding: 18px 14px;
+    }
 
-  .countdown {
-    gap: 16px;
-  }
+    .countdown {
+        gap: 16px;
+    }
 
-  .count-num {
-    font-size: clamp(34px, 11vw, 58px);
-  }
+    .count-num {
+        font-size: clamp(34px, 11vw, 58px);
+    }
 
-  .count-lbl {
-    font-size: 10px;
-    letter-spacing: 0.3em;
-  }
+    .count-lbl {
+        font-size: 10px;
+        letter-spacing: 0.24em;
+    }
 
-  .count-sep {
-    height: 30px;
-  }
+    .count-sep {
+        height: 30px;
+    }
 }
 
-/* =========================================================
-   10. UBICACIÓN / VENUE
-   Fondo dorado y tarjeta blanca con imagen, datos y mapa
-========================================================= */
+/* DETALLES */
 .venue-wrap {
-  background: var(--gold);
-  color: var(--ivory);
+    background: var(--bg-green);
+    color: var(--text-on-green);
 }
 
-.venue-wrap .title,
+.venue-wrap .title {
+    color: var(--text-on-green);
+}
+
 .venue-wrap .subtitle {
-  color: var(--ivory);
+    color: var(--text-on-green-soft);
 }
 
-.venue-wrap .subtitle {
-  color: rgba(249, 247, 242, 0.88);
+.details-grid {
+    display: grid;
+    gap: 22px;
+    margin-top: 28px;
 }
 
-.venue-card {
-  overflow: hidden;
-  padding: 22px;
-  text-align: center;
-  color: var(--brown);
-  background: var(--white);
-  border: 1px solid rgba(197, 164, 109, 0.2);
-  border-radius: var(--r-xl);
-  box-shadow: var(--shadow-lg);
+@media (min-width: 900px) {
+    .details-grid {
+        grid-template-columns: 1fr;
+        max-width: 760px;
+        margin: 28px auto 0;
+        align-items: start;
+    }
 }
 
-@media (min-width: 768px) {
-  .venue-card {
-    padding: 34px;
-  }
+.details-card {
+    text-align: center;
+}
+
+.details-kicker {
+    margin: 0 0 16px;
+    color: var(--text-main);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.details-title {
+    margin: 0 0 10px;
+    color: var(--text-main);
+    font-size: clamp(32px, 5vw, 46px);
+    line-height: 1.05;
+}
+
+.venue-img-frame {
+    position: relative;
+    width: 100%;
+    margin: 0 auto 22px;
+    overflow: hidden;
+    border-radius: 6px;
+
+    background: transparent;
 }
 
 .venue-img {
-  display: block;
-  width: 100%;
-  max-width: 520px;
-  height: auto;
-  margin: 0 auto 10px;
-  opacity: 0.95;
+    display: block;
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 6px;
+
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 9%, black 88%, transparent 100%);
+    -webkit-mask-composite: source-in;
+
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
+        linear-gradient(to bottom, transparent 0%, black 9%, black 88%, transparent 100%);
+    mask-composite: intersect;
 }
 
 .venue-name {
-  margin: 12px 0 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(197, 164, 109, 0.2);
-  color: var(--brown);
-  font-size: clamp(32px, 6vw, 48px);
-  font-weight: 400;
-  line-height: 1;
-}
-
-.venue-meta .dot,
-.venue-meta .meta-text {
-  color: var(--brown);
-}
-
-.venue-meta .meta-text {
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  line-height: 1;
+    margin: 12px 0 14px;
+    color: var(--text-main);
+    font-size: clamp(34px, 6vw, 50px);
+    line-height: 1;
 }
 
 .venue-line {
-  margin: 16px auto;
+    margin: 14px auto;
+    background:  var(--linea-verde);
+   
+}
+
+.venue-meta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.venue-meta-icon,
+.meta-text,
+.addr {
+    color: var(--text-main);
+}
+
+.venue-meta-icon {
+    width: 17px;
+    height: 17px;
+    opacity: 0.82;
+}
+
+.meta-text {
+    font-size: 17px;
+    font-weight: 600;
 }
 
 .addr {
-  margin-top: 14px;
-  color: var(--brown);
-  font-size: 14px;
-  line-height: 1.5;
+    margin-top: 6px;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 .map-box {
-  overflow: hidden;
-  height: 240px;
-  margin-top: 18px;
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-md);
+    overflow: hidden;
+    width: 100%;
+    height: 240px;
+    margin-top: 18px;
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-md);
 }
 
 .map {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  filter: sepia(0.25) saturate(0.6) hue-rotate(5deg) brightness(1.05);
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: sepia(0.2) saturate(0.7) brightness(1.03);
 }
 
-.venue-actions {
-  display: flex;
-  justify-content: center;
-  margin-top: 18px;
+.venue-actions,
+.pre-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
 }
 
-/* Enlace tipo "abrir en Google Maps" */
 .maps-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  padding: 0 0 10px;
-  color: #b49667;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.2em;
-  border-bottom: 1px solid rgba(180, 150, 103, 0.35);
-  transition: color 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
-}
-
-.maps-link:hover {
-  color: #9f8153;
-  border-bottom-color: rgba(159, 129, 83, 0.5);
-  transform: translateY(-1px);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 0 10px;
+    color: var(--text-main);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    border-bottom: 1px solid var(--linea-verde);
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .maps-link-icon {
-  display: block;
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-  flex: 0 0 auto;
-  opacity: 0.9;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
 }
 
-.maps-link-text {
-  display: inline-block;
+
+/* TRANSPORTE */
+.transport-card-soft {
+    text-align: center;
 }
 
-/* =========================================================
-   11. TRANSPORTE
-   Tarjeta clara con paradas de ida y horarios de vuelta
-========================================================= */
-#transport {
-  background: #f9f6f1;
-}
-
-.transport-card {
-  padding: 22px;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(197, 164, 109, 0.2);
-  border-radius: var(--r-xl);
-  box-shadow: var(--shadow-md);
-  backdrop-filter: blur(10px);
-}
-
-@media (min-width: 768px) {
-  .transport-card {
-    padding: 34px;
-  }
-}
-
-.transport-block-title {
-  margin: 0 0 10px;
-  color: var(--brown);
-  text-align: center;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.1;
+.transport-note,
+.transport-note-soft,
+.transport-small,
+.parking-text {
+    color: var(--text-soft);
+    line-height: 1.7;
 }
 
 .transport-note {
-  margin: 0 0 18px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.55;
+    max-width: 620px;
+    margin: 0 auto 22px;
+    font-size: 15px;
 }
 
-.transport-stop {
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(197, 164, 109, 0.18);
+.transport-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 8px;
 }
 
-.transport-stop-last {
-  padding-bottom: 0;
-  border-bottom: 0;
+.transport-block {
+    padding: 20px 18px;
+    background: var(--bg-card-soft);
+   /* border: 1px solid var(--accent-soft); */
+   border: 1px solid var(--linea-verde);
+    border-radius: var(--r-md);
+    text-align: center;
 }
 
-.transport-stop-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 6px;
+.transport-block-head {
+    margin-bottom: 16px;
 }
 
-.transport-stop-name {
-  color: var(--brown);
-  font-size: 18px;
-  font-weight: 600;
+.transport-block-kicker {
+    display: block;
+    color: var(--text-main);
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 1.1;
 }
 
-.transport-stop-time {
-  color: var(--brown-80);
-  font-size: 14px;
-  white-space: nowrap;
+.transport-mini-line {
+    width: 46px;
+    height: 1px;
+    margin: 10px auto 0;
+    /* background: var(--accent-soft); */
+   background:  var(--linea-verde);
 }
 
-.transport-stop-address {
-  margin: 0 0 10px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.5;
+.transport-label,
+.transport-time-label {
+    margin: 0 0 10px;
+    color: var(--text-soft);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
 }
 
-.transport-line {
-  margin: 22px auto;
+.transport-stops {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.transport-stop-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 86px;
+    padding: 9px 14px;
+    background: var(--bg-card);
+   /* border: 1px solid var(--accent-soft); */
+   border: 1px solid var(--linea-verde);
+    border-radius: 999px;
+    color: var(--text-main);
+    font-size: 15px;
+}
+
+.transport-time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.transport-time-value,
+.transport-return-time {
+    color: var(--text-main);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.transport-note-soft,
+.transport-small,
+.parking-text {
+    font-size: 14px;
 }
 
 .transport-return-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 14px;
 }
 
 .transport-return-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(197, 164, 109, 0.18);
-  border-radius: var(--r-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--bg-card);
+   /* border: 1px solid var(--accent-soft); */
+   border: 1px solid var(--linea-verde);
+    border-radius: var(--r-md);
 }
 
 .transport-return-label {
-  color: var(--sage-dark);
-  font-weight: 600;
+    color: var(--text-main);
+    font-weight: 600;
 }
 
-.transport-return-time {
-  color: var(--brown);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 18px;
+@media (min-width: 900px) {
+    .transport-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
 }
 
-/* =========================================================
-   12. FAQ
-   Fondo dorado con tarjeta blanca de desplegables
-========================================================= */
-#faq {
-  background: var(--gold);
-  color: var(--ivory);
+@media (max-width: 480px) {
+    .transport-stops {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .transport-stop-pill {
+        min-width: 0;
+        padding: 8px 10px;
+        font-size: 14px;
+        white-space: nowrap;
+        flex: 1 1 0;
+        max-width: 96px;
+    }
+
+    .transport-return-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        gap: 10px;
+        padding: 14px 12px;
+    }
+
+    .transport-return-label {
+        flex: 1 1 45%;
+        min-width: 0;
+        font-size: 13px;
+        line-height: 1.25;
+    }
+
+    .transport-return-time {
+        flex: 1 1 55%;
+        min-width: 0;
+        font-size: 16px;
+        line-height: 1.15;
+        text-align: right;
+    }
 }
 
-#faq .title,
-#faq .subtitle {
-  color: var(--ivory);
+.plus18 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-#faq .subtitle {
-  color: rgba(249, 247, 242, 0.88);
-}
-
-.faq-card {
-  padding: 22px;
-  background: var(--white);
-  border: 1px solid rgba(197, 164, 109, 0.2);
-  border-radius: var(--r-xl);
-  box-shadow: var(--shadow-lg);
-}
-
-@media (min-width: 768px) {
-  .faq-card {
-    padding: 34px;
-  }
-}
-
-.faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-details {
-  padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(197, 164, 109, 0.2);
-  border-radius: var(--r-md);
-}
-
-summary {
-  cursor: pointer;
-  color: var(--sage-dark);
-  font-weight: 600;
-  list-style: none;
-}
-
-summary::-webkit-details-marker {
-  display: none;
-}
-
-details p {
-  margin: 10px 0 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.55;
-}
-
-/* =========================================================
-   13. PREBODA
-   Fondo claro con tarjeta para evento previo
-========================================================= */
+/* PREBODA */
 .prewedding-wrap {
-  background: #f9f6f1;
+    background: var(--bg-beige);
+    color: var(--text-main);
 }
 
-.prewedding-subtitle {
-  margin-bottom: 10px;
-  color: rgba(131, 93, 47, 0.72);
+.prewedding-wrap .title {
+    color: var(--text-main);
 }
 
-.prewedding-title {
-  color: var(--brown);
+.prewedding-wrap .subtitle {
+    color: var(--text-soft);
 }
 
 .prewedding-text {
-  max-width: 720px;
-  margin: 0 auto 26px;
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.6;
-  letter-spacing: normal;
-  text-transform: none;
+    max-width: 760px;
+    margin: 0 auto 28px;
+    color: var(--text-soft);
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: normal;
+    text-transform: none;
+    text-align: center;
 }
 
-.pre-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  max-width: 720px;
-  margin: 0 auto;
+.pre-card {
+    max-width: 760px;
+    margin: 0 auto;
 }
 
+.pre-card-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.pre-kicker {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--text-soft);
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.pre-name {
+    margin: 0 0 10px;
+    color: var(--text-main);
+    font-size: 40px;
+    line-height: 1.05;
+}
+
+.pre-details {
+  /*  display: grid;
+    gap: 12px;
+    margin: 0 0 20px; */
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 0 auto 20px;
+    max-width: 760px;
+}
+
+/*
 @media (min-width: 760px) {
-  .pre-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+    .pre-details {
+        grid-template-columns: 1fr;
+        max-width: 820px;
+        margin: 0 auto 20px;    }
+}
+*/
+.pre-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 16px;
+    background: var(--bg-card-soft);
+    border: 1px solid var(--linea-verde);
+   /* border: 1px solid var(--accent-soft); */
+    border-radius: var(--r-md);
 }
 
-.pre-item {
-  padding: 20px;
-  text-align: center;
-  color: var(--sage-dark);
-  background: var(--white);
-  border: 1px solid rgba(197, 164, 109, 0.2);
-  border-radius: var(--r-xl);
-  box-shadow: var(--shadow-md);
+.pre-detail-label {
+    color: var(--text-soft);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
-.pre-item h3 {
-  margin: 8px 0 10px;
-  color: rgba(130, 95, 48, 0.92);
-  font-size: 34px;
-  font-weight: 400;
+.pre-detail-value {
+    color: var(--text-main);
+    font-size: 16px;
+    line-height: 1.45;
 }
 
-.pre-item .meta {
-  margin: 0;
-  color: rgba(130, 95, 48, 0.75);
-  font-size: 13px;
-  letter-spacing: 0.06em;
+.pre-note {
+    margin: 0 0 18px;
+    text-align: center;
+    color: var(--text-soft);
+    font-size: 15px;
+    line-height: 1.6;
 }
 
-.pre-item .place {
-  margin-top: 6px;
-  color: rgba(130, 95, 48, 0.6);
-  font-size: 13px;
-  font-style: italic;
-}
-
-.pre-icon {
-  width: 72px;
-  height: auto;
-  opacity: 0.9;
-}
-
-.pre-actions {
-  margin-top: 12px;
-}
-
-/* =========================================================
-   14. RSVP / FORMULARIO
-   Fondo dorado + tarjeta blanca + inputs del formulario
-========================================================= */
+/* RSVP */
+/* RSVP */
 .rsvp-wrap {
-  background: var(--gold);
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: var(--bg-green);
 }
 
 .rsvp-wrap .title {
-  color: var(--white);
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: var(--rsvp-title);
 }
 
 .rsvp-wrap .subtitle {
-  color: rgba(249, 247, 242, 0.88);
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: rgba(247, 244, 238, 0.88);
 }
 
 .rsvp-card {
-  max-width: 720px;
-  margin: 0 auto;
+    max-width: 760px;
+    margin: 0 auto;
+    background: rgba(232, 238, 233, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 12px 32px rgba(47, 58, 49, 0.08);
+    backdrop-filter: blur(8px);
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+.card.inner.rsvp-card {
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: rgba(232, 238, 233, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-/* Texto de cada label */
-label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  color: var(--sage-dark);
-  font-size: 14px;
-  font-weight: 600;
+.rsvp-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
-/* Inputs, textarea y selects:
-   - fondo claro
-   - borde dorado suave
-   - texto verde oscuro
-*/
-input,
-textarea,
-select {
-  padding: 12px;
-  background: var(--ivory);
-  border: 1px solid rgba(197, 164, 109, 0.3);
-  border-radius: 12px;
-  outline: none;
-  color: var(--sage-dark);
-  font-family: inherit;
-  font-size: 16px;
-  line-height: 1.2;
+.form-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-textarea {
-  min-height: 90px;
-  resize: vertical;
+.rsvp-card,
+.rsvp-card label,
+.rsvp-card input,
+.rsvp-card textarea,
+.rsvp-card select,
+.rsvp-card input::placeholder,
+.rsvp-card textarea::placeholder,
+.rsvp-card .section-label,
+.rsvp-card .guest-card-title,
+.rsvp-card .guest-card-subtitle,
+.rsvp-card .stepper-value,
+.rsvp-card .result,
+.rsvp-card label.radio {
+    font-family: "Lora", serif;
 }
 
-/* Apariencia cuando un campo está desactivado */
-input:disabled,
-select:disabled,
-textarea:disabled {
-  background: rgba(240, 236, 229, 0.9);
-  border-color: rgba(197, 164, 109, 0.18);
-  color: rgba(46, 74, 63, 0.55);
-  opacity: 0.55;
-  cursor: not-allowed;
+.rsvp-card .section-label,
+.rsvp-card .guest-card-title,
+.rsvp-card .bus-stop-label {
+    display: block;
+    margin: 0;
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: var(--rsvp-heading);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.32;
+    letter-spacing: 0;
 }
 
-/* Distribución en dos columnas en escritorio */
-.grid2 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
+.rsvp-card .guest-card-subtitle {
+    margin: 3px 0 0;
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: var(--rsvp-muted);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.45;
 }
 
-@media (min-width: 700px) {
-  .grid2 {
-    grid-template-columns: 1fr 1fr;
-  }
+.rsvp-card .guest-fields label,
+.rsvp-card .guest-card label,
+.rsvp-card .form-block > label,
+.rsvp-card label:not(.radio) {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: var(--rsvp-label);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.35;
 }
 
-/* Radios personalizados */
+.rsvp-card input,
+.rsvp-card textarea,
+.rsvp-card select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: rgba(232, 238, 233, 0.92);
+    border: 1px solid var(--rsvp-border);
+    border-radius: 14px;
+    outline: none;
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: var(--rsvp-text);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.25;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.rsvp-card input::placeholder,
+.rsvp-card textarea::placeholder {
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: rgba(85, 103, 90, 0.58);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.rsvp-card input:focus,
+.rsvp-card textarea:focus,
+.rsvp-card select:focus {
+    border-color: rgba(79, 98, 83, 0.45);
+    box-shadow: 0 0 0 3px var(--rsvp-focus);
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: rgba(236, 242, 237, 0.98);
+}
+
+.rsvp-card select::-ms-expand {
+    display: none;
+}
+
+.rsvp-card textarea {
+    min-height: 108px;
+    resize: vertical;
+}
+
+.rsvp-card input:disabled,
+.rsvp-card textarea:disabled,
+.rsvp-card select:disabled {
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: rgba(214, 223, 214, 0.85);
+    border-color: var(--rsvp-border-soft);
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: rgba(85, 103, 90, 0.5);
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
 .radios {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 2px;
 }
 
-label.radio {
-  display: inline-flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 10px;
-  color: var(--sage-dark);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.35;
-  cursor: pointer;
-  user-select: none;
+.rsvp-card label.radio {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px;
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: #374239;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.35;
+    cursor: pointer;
+    user-select: none;
 }
 
 .radio input {
-  display: none;
+    display: none;
 }
 
 .dot-radio {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  flex: 0 0 16px;
-  margin-top: 0;
-  background: transparent;
-  border: 2px solid var(--gold);
-  border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: transparent;
+    border: 2px solid var(--rsvp-label);
+    border-radius: 999px;
 }
 
 .dot-radio::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  background: var(--gold);
-  border-radius: 999px;
-  transform: scale(0);
-  transition: transform 0.16s ease;
+    content: "";
+    width: 8px;
+    height: 8px;
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: var(--rsvp-label);
+    border-radius: 999px;
+    transform: scale(0);
+    transition: transform 0.16s ease;
 }
 
 .radio input:checked + .dot-radio::after {
-  transform: scale(1);
+    transform: scale(1);
 }
+
+.guest-stepper {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2px;
+}
+
+.stepper-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: 1px solid var(--rsvp-border);
+    border-radius: 12px;
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: rgba(219, 228, 220, 0.95);
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: var(--rsvp-heading);
+    font-family: "Lora", serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.stepper-btn:hover {
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: rgba(232, 238, 233, 1);
+    border-color: rgba(79, 98, 83, 0.3);
+}
+
+.stepper-btn:active {
+    transform: scale(0.97);
+}
+
+.stepper-value {
+    min-width: 16px;
+    text-align: center;
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: #374239;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.guest-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.guest-card {
+    padding: 16px;
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: rgba(219, 228, 220, 0.82);
+    border: 1px solid var(--rsvp-border-soft);
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(47, 58, 49, 0.04);
+    backdrop-filter: blur(4px);
+}
+
+.guest-card-head {
+    margin-bottom: 10px;
+}
+
+.guest-card .guest-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
 
 /* Bloque de parada de bus ocultable */
 .bus-stop-group > label {
@@ -1031,88 +1176,1121 @@ label.radio {
   display: none !important;
 }
 
-/* Mensaje de resultado del envío */
 .result {
-  display: none;
-  margin-top: 18px;
-  padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.86);
-  border: 1px solid rgba(197, 164, 109, 0.2);
-  border-radius: var(--r-md);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
-  color: var(--brown);
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.5;
+    display: none;
+    margin-top: 8px;
+    padding: 14px 16px;
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: rgba(232, 238, 233, 0.96);
+    border: 1px solid var(--rsvp-border-soft);
+    border-radius: var(--r-md);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: #374239;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.45;
 }
 
 .result.is-error {
-  background: rgba(255, 248, 248, 0.92);
-  border-color: rgba(166, 70, 70, 0.18);
-  color: #a64646;
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: rgba(255, 244, 244, 0.94);
+    border-color: rgba(166, 70, 70, 0.18);
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: #a64646;
 }
 
 button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-/* =========================================================
-   15. BOTÓN FLOTANTE PARA VOLVER ARRIBA
-========================================================= */
+.is-hidden {
+    display: none !important;
+}
+
+.rsvp-card .btn.rsvp-submit {
+    font-family: "Lora", serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 18px;
+    border: 1px solid rgba(79, 98, 83, 0.22);
+    border-radius: 14px;
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: var(--rsvp-button);
+    /* CAMBIAR COLOR DE LETRA AQUÍ */
+    color: var(--rsvp-button-text);
+    box-shadow: 0 10px 24px rgba(79, 98, 83, 0.18);
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.rsvp-card .btn.rsvp-submit:hover {
+    /* CAMBIAR COLOR DE FONDO AQUÍ */
+    background: var(--rsvp-button-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(79, 98, 83, 0.22);
+}
+
+.rsvp-card .btn.rsvp-submit:active {
+    transform: translateY(0);
+}
+
+.rsvp-card .btn.rsvp-submit svg {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    display: block;
+}
+
+@media (max-width: 699px) {
+    .rsvp-card form {
+        gap: 16px;
+    }
+
+    .rsvp-card .section-label,
+    .rsvp-card .guest-card-title,
+    .rsvp-card .bus-stop-label {
+        font-size: 15px;
+    }
+
+    .rsvp-card .guest-card-subtitle {
+        font-size: 12px;
+    }
+
+    .rsvp-card .guest-fields label,
+    .rsvp-card .guest-card label,
+    .rsvp-card .form-block > label,
+    .rsvp-card label:not(.radio),
+    .rsvp-card label.radio {
+        font-size: 14px;
+    }
+
+    .rsvp-card input,
+    .rsvp-card textarea {
+        padding: 12px 13px;
+        font-size: 14px;
+    }
+
+    .rsvp-card select {
+        padding-right: 42px;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%234f6253' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 18px;
+    }
+
+    .rsvp-card input::placeholder,
+    .rsvp-card textarea::placeholder {
+        font-size: 14px;
+    }
+
+    .guest-card {
+        padding: 16px;
+        /* CAMBIAR COLOR DE FONDO AQUÍ */
+        background: rgba(219, 228, 220, 0.78);
+        border: 1px solid var(--rsvp-border-soft);
+        border-radius: 18px;
+    }
+
+    .stepper-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 19px;
+    }
+
+    .stepper-value {
+        font-size: 15px;
+    }
+
+    .result {
+        font-size: 13px;
+    }
+}
+
+/* FAB */
 .fab {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 60;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(197, 164, 109, 0.3);
-  border-radius: 999px;
-  box-shadow: var(--shadow-md);
-  color: var(--sage-dark);
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  backdrop-filter: blur(10px);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 250, 244, 0.92);
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+    box-shadow: var(--shadow-md);
+    color: var(--text-main);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
 }
 
 .fab.show {
-  opacity: 1;
-  pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .fab:hover {
-  transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
-/* =========================================================
-   16. CIERRE / FIRMA FINAL
-   Línea decorativa + logo o sello final
-========================================================= */
+/* CIERRE */
 .closing-signature {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  padding: 22px 20px 34px;
-  background: #f8f6f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    padding: 34px 20px 42px;
+    background: var(--bg-beige);
 }
 
 .closing-signature-line {
-  width: 72px;
-  height: 1px;
-  background: var(--brown-22);
+    width: 72px;
+    height: 1px;
+    background: var(--accent-soft);
 }
 
 .closing-signature-logo {
-  display: block;
-  width: 74px;
-  height: auto;
-  opacity: 0.72;
+    display: block;
+    width: 60px;
+    height: auto;
+    opacity: 0.72;
+}
+
+/* MOBILE */
+@media (max-width: 699px) {
+    .rsvp-card form {
+        gap: 16px;
+    }
+
+    .rsvp-card select {
+        padding-right: 42px;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%233f5446' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 18px;
+    }
+
+    .stepper-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 19px;
+    }
+
+    .stepper-value {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+
+    .title {
+        font-size: clamp(34px, 9vw, 46px);
+    }
+
+    .subtitle {
+        font-size: 11px;
+        letter-spacing: 0.16em;
+    }
+
+    .details-title,
+    .venue-name {
+        font-size: clamp(30px, 8vw, 40px);
+    }
+
+    .pre-name {
+        font-size: clamp(34px, 9vw, 44px);
+    }
+
+    .addr,
+    .meta-text,
+    .pre-detail-value,
+    .transport-stop-pill,
+    .transport-note,
+    .transport-note-soft,
+    .transport-small,
+    .parking-text,
+    .pre-note,
+    .prewedding-text {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .count-num {
+        font-size: clamp(30px, 10vw, 48px);
+    }
+
+    .count-lbl,
+    .pre-detail-label,
+    .transport-label,
+    .transport-time-label,
+    .maps-link,
+    .details-kicker {
+        font-size: 10px;
+        letter-spacing: 0.14em;
+    }
+
+    .hero-kicker {
+        font-size: 11px;
+        letter-spacing: 0.22em;
+    }
+
+    .hero-date {
+        font-size: clamp(15px, 4vw, 20px);
+    }
+}
+
+/* =========================================================
+   RESPONSIVE FINAL · móvil consistente en distintas anchuras
+========================================================= */
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+img,
+iframe,
+svg,
+video,
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.section,
+.container,
+.card,
+.card.inner,
+.details-card,
+.pre-card,
+.rsvp-card,
+.transport-layout,
+.transport-block,
+.transport-return-item,
+.guest-card {
+    max-width: 100%;
+    min-width: 0;
+}
+
+.details-card *,
+.pre-card *,
+.rsvp-card *,
+.transport-block *,
+.transport-return-item *,
+.guest-card * {
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.font-display,
+.font-names {
+    line-height: 1.05;
+}
+
+/* ---------- Tablet pequeña / móviles grandes ---------- */
+@media (max-width: 768px) {
+    .section {
+        padding: 64px 0;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .card.inner,
+    .details-card,
+    .pre-card {
+        padding: 24px 20px;
+    }
+
+    .title {
+        font-size: clamp(34px, 8vw, 50px);
+    }
+
+    .subtitle {
+        font-size: 12px;
+        letter-spacing: 0.16em;
+    }
+
+    .details-title,
+    .venue-name,
+    .pre-name {
+        font-size: clamp(30px, 8vw, 42px);
+    }
+
+    .addr,
+    .meta-text,
+    .pre-detail-value,
+    .transport-note,
+    .transport-note-soft,
+    .transport-small,
+    .parking-text,
+    .pre-note,
+    .prewedding-text {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .maps-link,
+    .details-kicker,
+    .pre-detail-label,
+    .transport-label,
+    .transport-time-label,
+    .count-lbl {
+        letter-spacing: 0.14em;
+    }
+
+    .hero .content {
+        grid-template-rows: 1fr auto 1fr;
+    }
+
+    .hero-top {
+        padding-top: 0;
+    }
+
+    .hero-names {
+        margin-top: 14px;
+        gap: 12px;
+    }
+
+    .hero-names .name {
+        font-size: clamp(56px, 14vw, 92px);
+        line-height: 0.9;
+    }
+
+    .hero-names .amp {
+        font-size: clamp(28px, 6vw, 44px);
+        margin: -4px 0 0;
+    }
+
+    .hero-kicker {
+        font-size: 11px;
+        letter-spacing: 0.24em;
+    }
+
+    .hero-date {
+        font-size: clamp(15px, 3.8vw, 22px);
+        letter-spacing: 0.12em;
+    }
+
+    .hero-bottom {
+        padding: 0 16px 26px;
+    }
+
+    #countdown {
+        min-height: 320px;
+        padding: 28px 0;
+    }
+
+    #countdown .container {
+        width: min(100%, calc(100% - 24px));
+        min-height: 210px;
+        padding: 18px 14px;
+    }
+
+    .countdown {
+        gap: 14px;
+    }
+
+    .count-num {
+        font-size: clamp(30px, 10vw, 54px);
+    }
+
+    .count-lbl {
+        font-size: 10px;
+    }
+
+    .count-sep {
+        height: 28px;
+    }
+
+    .map-box {
+        height: 220px;
+    }
+
+    .transport-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .transport-block {
+        padding: 18px 16px;
+    }
+
+    .transport-block-kicker {
+        font-size: clamp(22px, 6vw, 32px);
+    }
+
+    .transport-return-item {
+        gap: 10px;
+    }
+
+    .pre-card {
+        max-width: 100%;
+    }
+
+    .pre-card-top {
+        margin-bottom: 20px;
+    }
+
+    .pre-details {
+        max-width: 100%;
+        gap: 10px;
+    }
+
+    .pre-detail {
+        padding: 14px 14px;
+    }
+
+    .rsvp-card {
+        max-width: 100%;
+    }
+
+    .rsvp-card form {
+        gap: 16px;
+    }
+
+    .guest-card {
+        padding: 14px;
+    }
+}
+
+/* ---------- Móvil estándar ---------- */
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+
+    .section {
+        padding: 56px 0;
+    }
+
+    .container {
+        padding: 0 14px;
+    }
+
+    .card.inner,
+    .details-card,
+    .pre-card {
+        padding: 22px 16px;
+        border-radius: 20px;
+    }
+
+    .title {
+        font-size: clamp(32px, 9vw, 42px);
+        line-height: 1.08;
+    }
+
+    .subtitle {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+    }
+
+    .details-title,
+    .venue-name {
+        font-size: clamp(28px, 8.2vw, 38px);
+    }
+
+    .pre-name {
+        font-size: clamp(30px, 9vw, 40px);
+    }
+
+    .details-kicker,
+    .maps-link,
+    .pre-detail-label,
+    .transport-label,
+    .transport-time-label,
+    .count-lbl {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+    }
+
+    .addr,
+    .meta-text,
+    .pre-detail-value,
+    .transport-note,
+    .transport-note-soft,
+    .transport-small,
+    .parking-text,
+    .pre-note,
+    .prewedding-text {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .hero-top {
+        padding-top: 0;
+    }
+
+    .hero-kicker {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        margin-bottom: 4px;
+    }
+
+    .hero-names {
+        margin-top: 12px;
+        gap: 10px;
+    }
+
+    .hero-names .name {
+        font-size: clamp(48px, 13vw, 72px);
+    }
+
+    .hero-names .amp {
+        font-size: clamp(24px, 5.4vw, 36px);
+    }
+
+    .hero-bottom {
+        padding: 0 14px 24px;
+    }
+
+    .hero-divider {
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .hero-divider span:first-child,
+    .hero-divider span:last-child {
+        width: 44px;
+    }
+
+    .hero-date {
+        font-size: clamp(14px, 4vw, 18px);
+        letter-spacing: 0.1em;
+    }
+
+    #countdown .container {
+        width: min(100%, calc(100% - 16px));
+        padding: 16px 12px;
+    }
+
+    .countdown {
+        gap: 10px;
+    }
+
+    .count-num {
+        font-size: clamp(26px, 9.5vw, 42px);
+    }
+
+    .count-sep {
+        height: 24px;
+    }
+
+    .venue-img-frame {
+        margin-bottom: 18px;
+    }
+
+    .map-box {
+        height: 200px;
+        margin-top: 16px;
+    }
+
+    .maps-link {
+        gap: 3px;
+        padding-bottom: 8px;
+    }
+
+    .maps-link-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .transport-note {
+        margin-bottom: 18px;
+    }
+
+    .transport-layout {
+        gap: 14px;
+    }
+
+    .transport-block {
+        padding: 16px 14px;
+    }
+
+    .transport-block-head {
+        margin-bottom: 14px;
+    }
+
+    .transport-block-kicker {
+        font-size: clamp(20px, 6.4vw, 28px);
+        line-height: 1.15;
+    }
+
+    .transport-stops {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 16px;
+    }
+
+    .transport-stop-pill {
+        min-width: 0;
+        max-width: 88px;
+        flex: 1 1 0;
+        white-space: nowrap;
+        padding: 7px 8px;
+        font-size: 13px;
+    }
+
+    .transport-time-value,
+    .transport-return-time {
+        font-size: 17px;
+        line-height: 1.15;
+    }
+
+    .transport-return-list {
+        gap: 10px;
+        margin-top: 12px;
+    }
+
+.transport-return-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        gap: 10px;
+        padding: 14px 12px;
+    }
+
+    .transport-return-label {
+        flex: 1 1 45%;
+        min-width: 0;
+        font-size: 13px;
+        line-height: 1.25;
+    }
+
+    .transport-return-time {
+        flex: 1 1 55%;
+        min-width: 0;
+        font-size: 16px;
+        line-height: 1.15;
+        text-align: right;
+    }
+
+    .pre-card-top {
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .pre-kicker {
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        line-height: 1.5;
+    }
+
+    .pre-details {
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .pre-detail {
+        padding: 12px 12px;
+    }
+
+    .pre-note {
+        margin-bottom: 16px;
+    }
+
+    .rsvp-card {
+        backdrop-filter: none;
+    }
+
+    .rsvp-card .section-label,
+    .rsvp-card .guest-card-title,
+    .rsvp-card .bus-stop-label {
+        font-size: 15px;
+    }
+
+    .rsvp-card .guest-card-subtitle {
+        font-size: 12px;
+    }
+
+    .rsvp-card .guest-fields label,
+    .rsvp-card .guest-card label,
+    .rsvp-card .form-block > label,
+    .rsvp-card label:not(.radio),
+    .rsvp-card label.radio,
+    .rsvp-card input,
+    .rsvp-card textarea,
+    .rsvp-card select {
+        font-size: 14px;
+    }
+
+    .rsvp-card input,
+    .rsvp-card textarea,
+    .rsvp-card select {
+        padding: 11px 12px;
+        border-radius: 12px;
+    }
+
+    .rsvp-card textarea {
+        min-height: 96px;
+    }
+
+    .rsvp-card select {
+        padding-right: 40px;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%233f5446' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 16px;
+    }
+
+    .guest-stepper {
+        gap: 8px;
+    }
+
+    .stepper-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+        border-radius: 10px;
+    }
+
+    .stepper-value {
+        font-size: 15px;
+    }
+
+    .guest-card {
+        padding: 13px;
+        border-radius: 16px;
+    }
+
+    .guest-card .guest-fields {
+        gap: 11px;
+    }
+
+    .rsvp-card .btn.rsvp-submit {
+        width: 100%;
+        padding: 13px 16px;
+        font-size: 14px;
+        justify-content: center;
+    }
+
+    .result {
+        font-size: 13px;
+        padding: 12px 14px;
+    }
+
+    .fab {
+        right: 14px;
+        bottom: 14px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .closing-signature {
+        padding: 30px 18px 36px;
+        gap: 18px;
+    }
+
+    .closing-signature-logo {
+        width: min(50px, 60vw);
+    }
+}
+
+/* ---------- Móvil estrecho ---------- */
+@media (max-width: 380px) {
+    .section {
+        padding: 48px 0;
+    }
+
+    .container {
+        padding: 0 12px;
+    }
+
+    .card.inner,
+    .details-card,
+    .pre-card {
+        padding: 20px 14px;
+        border-radius: 18px;
+    }
+
+    .title {
+        font-size: clamp(30px, 8.8vw, 38px);
+    }
+
+    .subtitle {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+    }
+
+    .details-title,
+    .venue-name,
+    .pre-name {
+        font-size: clamp(26px, 8.4vw, 34px);
+    }
+
+    .hero-kicker {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+    }
+
+    .hero-names {
+        margin-top: 10px;
+        gap: 8px;
+    }
+
+    .hero-names .name {
+        font-size: clamp(42px, 12vw, 62px);
+    }
+
+    .hero-names .amp {
+        font-size: clamp(22px, 5vw, 30px);
+    }
+
+    .hero-date {
+        font-size: 13px;
+    }
+
+    .countdown {
+        gap: 8px;
+    }
+
+    .count-num {
+        font-size: clamp(22px, 8.4vw, 34px);
+    }
+
+    .count-lbl {
+        font-size: 9px;
+        letter-spacing: 0.08em;
+    }
+
+    .count-sep {
+        height: 20px;
+    }
+
+    .venue-meta {
+        gap: 6px;
+    }
+
+    .venue-meta-icon {
+        width: 15px;
+        height: 15px;
+    }
+
+    .addr,
+    .meta-text,
+    .pre-detail-value,
+    .transport-note,
+    .transport-note-soft,
+    .transport-small,
+    .parking-text,
+    .pre-note,
+    .prewedding-text {
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .map-box {
+        height: 180px;
+    }
+
+    .transport-block {
+        padding: 14px 12px;
+    }
+
+    .transport-block-kicker {
+        font-size: 18px;
+    }
+
+    .transport-stops {
+        gap: 5px;
+    }
+
+    .transport-stop-pill {
+        max-width: 80px;
+        padding: 6px 6px;
+        font-size: 12px;
+    }
+
+    .transport-return-item {
+        padding: 12px 10px;
+    }
+
+    .transport-return-label {
+        font-size: 13px;
+    }
+
+    .transport-return-time {
+        font-size: 16px;
+    }
+
+    .pre-kicker {
+        font-size: 12px;
+    }
+
+    .pre-detail {
+        padding: 11px 10px;
+    }
+
+    .rsvp-card form {
+        gap: 14px;
+    }
+
+    .rsvp-card .section-label,
+    .rsvp-card .guest-card-title {
+        font-size: 14px;
+    }
+
+    .rsvp-card .guest-fields label,
+    .rsvp-card .guest-card label,
+    .rsvp-card .form-block > label,
+    .rsvp-card label:not(.radio),
+    .rsvp-card label.radio,
+    .rsvp-card input,
+    .rsvp-card textarea,
+    .rsvp-card select {
+        font-size: 13px;
+    }
+
+    .rsvp-card input,
+    .rsvp-card textarea,
+    .rsvp-card select {
+        padding: 10px 11px;
+    }
+
+    .stepper-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 17px;
+    }
+
+    .guest-card {
+        padding: 12px;
+    }
+
+    .fab {
+        right: 12px;
+        bottom: 12px;
+        width: 42px;
+        height: 42px;
+    }
+}
+
+/* ---------- Móviles muy estrechos / viewport crítico ---------- */
+@media (max-width: 340px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .card.inner,
+    .details-card,
+    .pre-card {
+        padding: 18px 12px;
+    }
+
+    .hero-names .name {
+        font-size: clamp(38px, 11.2vw, 54px);
+    }
+
+    .hero-names .amp {
+        font-size: 20px;
+    }
+
+    .transport-stops {
+        gap: 4px;
+    }
+
+    .transport-stop-pill {
+        max-width: 74px;
+        font-size: 11px;
+        padding: 6px 5px;
+    }
+
+    .count-num {
+        font-size: clamp(20px, 7.8vw, 30px);
+    }
+
+    .count-lbl {
+        font-size: 8px;
+    }
+
+    .rsvp-card .btn.rsvp-submit {
+        font-size: 13px;
+        padding: 12px 14px;
+    }
+}
+
+.addr.plus18 {
+    font-size: 20px !important;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+/* AJUSTE FINO HERO */
+.hero-top-names {
+    transform: translateY(25px);
+}
+
+.hero-bottom-date {
+    transform: translateY(20px);
+}
+
+/* Tablet pequeña / móviles grandes */
+@media (max-width: 768px) {
+    .hero-top-names {
+        transform: translateY(40px);
+    }
+
+    .hero-bottom-date {
+        transform: translateY(-30px);
+    }
+}
+
+/* Móvil estándar */
+@media (max-width: 480px) {
+    .hero-top-names {
+        transform: translateY(14px);
+    }
+
+    .hero-bottom-date {
+        transform: translateY(-110px);
+    }
+}
+
+/* Móvil estrecho */
+@media (max-width: 380px) {
+    .hero-top-names {
+        transform: translateY(10px);
+    }
+
+    .hero-bottom-date {
+        transform: translateY(-120px);
+    }
+}
+
+/* Móvil muy estrecho */
+@media (max-width: 340px) {
+    .hero-top-names {
+        transform: translateY(6px);
+    }
+
+    .hero-bottom-date {
+        transform: translateY(-120px);
+    }
 }
