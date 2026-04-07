@@ -847,6 +847,27 @@ img {
     max-width: 760px;
 }
 
+.maps-link2 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+    padding: 8px 22px;
+    border: 1px solid rgba(63, 84, 70, 0.18);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--text-main);
+     font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+}
+
+.maps-link2:hover {
+    transform: translateY(-1px);
+    background: rgba(147, 169, 150, 0.08);
+}
+
 /*
 @media (min-width: 760px) {
     .pre-details {
