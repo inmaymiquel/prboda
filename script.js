@@ -4,8 +4,7 @@
 ========================================================= */
 const EVENT_ISO = "2026-06-20T19:30:00";
 const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyRjz6cmsD8PJXFlsrUaab6DjeqQa_EOYoDxFJLlF0MMS0Dgea7N1Fx4cIyWuSNic4wWg/exec"
-
+  "https://script.google.com/macros/s/AKfycbyRvSFwieUMOb6cVpritNZW-wyuotTsSoz0kHZO5QM5JnhgWE4BPyMljl8Tn5Ijiv-9-g/exec"
 /* =========================================================
    HELPERS
 ========================================================= */
